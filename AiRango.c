@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -141,13 +140,6 @@ int *Dijkstra(grafo *Grafo, int Origem, int Nos) {
         if (found == 0) {
           heap = heap_insert(heap, V, D[V], &tam_heap, &tamMAX);
         }
-
-        /* printf("HEAP:\n");
-        for(int a = 0; a < tam_heap; a++){
-          printf("%d: %d, %d\n", a, heap[a].V, heap[a].P);
-        }
-        printf("\n"); */
-        
       }
       e = e->Next;
     }
@@ -158,7 +150,8 @@ int *Dijkstra(grafo *Grafo, int Origem, int Nos) {
 int Delivery(Tabela *Rest, int Pos_E, Fila *P, int N) {
   int Nova_pos, Dist = -1, R;
   for (int a = 0; a < N; a++) {
-    if (Dist == -1 || Dist > Rest[a].array[Pos_E] + Rest[a].array[P->Head->Next->P]) {
+    if (Dist == -1 ||
+        Dist > Rest[a].array[Pos_E] + Rest[a].array[P->Head->Next->P]) {
       Dist = Rest[a].array[Pos_E] + Rest[a].array[P->Head->Next->P];
       R = Rest[a].V;
     }
@@ -204,13 +197,6 @@ int main() {
     }
     Restaurantes[a].V = Rest;
     Restaurantes[a].array = Dijkstra(Grafo, Rest, V);
-    
-    printf("Restaurante %d:\nDistancia: ", a);
-    for(int b = 0; b < V; b++){
-      printf("%d ", Restaurantes[a].array[b]);
-    }
-    printf("\n\n");
-    
   }
   for (int a = 0; a < M; a++) {
     Entregadores[a] = Inicio;
