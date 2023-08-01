@@ -84,7 +84,7 @@ ST *delete_st_min(ST *root, int *V) {
     *V = Value;
     return R;
   } else {
-    int *L = delete_st_min(root->left, V);
+    ST *L = delete_st_min(root->left, V);
     root->left = L;
     return root;
   }
